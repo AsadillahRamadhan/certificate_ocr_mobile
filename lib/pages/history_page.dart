@@ -133,7 +133,29 @@ class EventCardContainer {
                     style: TextStyle(color: Colors.red),
                   ),
                   onPressed: () {
-                    Data.deleteData(context, data['id'], true);
+                    showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text('Konfirmasi Hapus'),
+                  content: Text('Anda yakin ingin menghapus data ini?'),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text('Batal'),
+                      onPressed: () {
+                        Navigator.of(context).pop(); 
+                      },
+                    ),
+                    TextButton(
+                      child: Text('Hapus'),
+                      onPressed: () {
+                        Data.deleteData(context, data['id'], true);
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
                   },
                 ),
               ],
