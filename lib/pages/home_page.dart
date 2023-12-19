@@ -46,10 +46,12 @@ class HomePage extends StatelessWidget {
               } else {
       final userData = snapshot.data;
     return Scaffold(
-      body: ListView(
-        physics: NeverScrollableScrollPhysics(),
+      body: Stack(
         children: [
-          Container(
+          Positioned(
+            left: 0.0,
+            right: 0.0,
+            child: Container(
             padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 50),
             decoration: BoxDecoration(
               color: Colors.red,
@@ -73,8 +75,12 @@ class HomePage extends StatelessWidget {
                 ),
               )
             ]),
-          ),
-          Padding(
+          ),),
+          Positioned(
+            left: 0.0,
+            right: 0.0,
+            top: 200,
+            child: Padding(
             padding: EdgeInsets.only(left: 15, top: 20, bottom: 10),
             child: Text(
               "History",
@@ -84,13 +90,19 @@ class HomePage extends StatelessWidget {
                   letterSpacing: 1,
                   wordSpacing: 2),
             ),
+          )
           ),
           Padding(
+            padding: EdgeInsets.only(top: 275),
+            child: Padding(
             padding: EdgeInsets.only(top: 20, left: 10, right: 10),
             child: EventCardContainer.builder()
           ),
+          )
+          
         ],
       ),
+
       floatingActionButton: floatingActionButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: bottomNavigationBar(context)

@@ -40,11 +40,8 @@ class EventCardContainer {
       ),
     );
           }
-          return ListView(
-              shrinkWrap: true,
-              physics: AlwaysScrollableScrollPhysics(),
-              children: cards,
-
+          return SingleChildScrollView(
+            child: Column(children: cards),
           );
         }
       },
